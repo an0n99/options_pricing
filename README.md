@@ -7,28 +7,17 @@ This is an options pricing model for American style stock options that uses BAW 
 
 The Barone-Adesi and Whaley model is ananalytical approximation method for pricing American options and was introduced as an extension of the Black-Scholes model, aiming to account for the early exercise premium of American options.
 
-The value of the trade is given by:
-![BAW Value](./images/baw1.png)
-
-where:
-
-![BAW Reference](./images/baw2.png)
-
-Reference: https://assets.pubpub.org/or0zyxly/21654278914381.pdf
-
 The BAW model uses a quadratic approximation to the early exercise boundary, which allows for a closed-form solution for the option price. This makes the model computationally efficient and suitable for pricing American options on non-dividend-paying stocks and indices.
 In low volatility environments, the BAW model is known to perform well
 
 However, it's important to note that the BAW model can become less accurate in high volatility environments or when the underlying asset pays significant dividends. In such cases, alternative methods like binomial trees or Monte Carlo simulations may be more appropriate.
 
+Reference: https://assets.pubpub.org/or0zyxly/21654278914381.pdf
+
 ### Monte Carlo Simulations
 
 Monte Carlo simulations are a computational technique used to estimate the value of an option or other derivative by simulating the future behavior of the underlying asset. This method is particularly useful in high volatility environments where analytical models may struggle to accurately capture the complexities of the market dynamics.
 
-Example of Monte Carlo Simulations for Standard Stock Price (Not Options):
-![MC Example](./images/mc_sim.png)
-
-Reference: https://www.tejwin.com/en/insight/options-pricing-with-monte-carlo-simulation/
 
 In a Monte Carlo simulation for option pricing, the following steps are typically followed:
 1. **Generate Random Paths**: A large number of possible future price paths for the underlying asset are generated using random variables and a stochastic process model (e.g., Geometric Brownian Motion).
@@ -37,7 +26,9 @@ In a Monte Carlo simulation for option pricing, the following steps are typicall
 
 Monte Carlo simulations perform well in high volatility environments
 
-## System Implementation
+Reference: https://www.tejwin.com/en/insight/options-pricing-with-monte-carlo-simulation/
+
+# System Implementation
 
 The core functionality of the simulator is implemented in the `run_bot` function, which takes the following parameters:
 
@@ -59,7 +50,7 @@ The simulator also incorporates risk management by utilizing the `manage_greeks`
 
 Additionally, the system retrieves the 10-year U.S. Treasury yield from the FRED API to use as the risk-free rate for option pricing calculations.
 
-## Backtesting Engine
+# Backtesting 
 It includes a backtesting section, to backtest results on historical data of a desired stocks. However, past performance is never indicative of future performance
 The backtesting component is implemented in the `backtest_bot` function, which takes the following parameters:
 
@@ -75,7 +66,7 @@ The `backtest_bot` function downloads historical data for the specified asset an
 - Number of losing trades
 - Total profit
 
-## Risk Management with Greeks
+# Risk Management with Greeks
 
 Effective risk management is crucial in options trading, and this system incorporates the calculation and utilization of Greeks to manage risk and adjust positions accordingly. The Greeks refer to a set of risk measures that describe the sensitivity of an option's price to various factors, such as the underlying asset's price, volatility, time to expiration, and interest rates.
 

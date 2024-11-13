@@ -1,6 +1,5 @@
-# Adaptive Options Trading System with Advanced American Pricing Models and Volatility-Specific Simulations
-
-This is an options trading simulator for American stock options that uses advanced models and techniques to make profitable trades in both low and high volatility markets. It is designed to be flexible, efficient, and easy to deploy and maintain.
+# Options Pricing Model 
+This is an options pricing model for American style stock options that uses BAW and Monte Carlo Simulations to make profitable trades in both low and high volatility markets.
 
 ## Models
 
@@ -18,11 +17,7 @@ where:
 Reference: https://assets.pubpub.org/or0zyxly/21654278914381.pdf
 
 The BAW model uses a quadratic approximation to the early exercise boundary, which allows for a closed-form solution for the option price. This makes the model computationally efficient and suitable for pricing American options on non-dividend-paying stocks and indices.
-In low volatility environments, the BAW model is known to perform well for several reasons:
-
-1. **Accuracy**: The quadratic approximation used in the BAW model works particularly well when the early exercise premium is small, which is typically the case in low volatility markets. The model's accuracy in these conditions is generally comparable to more computationally intensive numerical methods.
-2. **Computational Efficiency**: The closed-form solution of the BAW model makes it computationally efficient, allowing for fast pricing and easy integration into trading systems or real-time applications.
-3. **Stability**: The model's behavior is relatively stable in low volatility regimes, providing consistent and reliable pricing results.
+In low volatility environments, the BAW model is known to perform well
 
 However, it's important to note that the BAW model can become less accurate in high volatility environments or when the underlying asset pays significant dividends. In such cases, alternative methods like binomial trees or Monte Carlo simulations may be more appropriate.
 
@@ -40,10 +35,7 @@ In a Monte Carlo simulation for option pricing, the following steps are typicall
 2. **Calculate Payoffs**: For each simulated price path, the payoff of the option is calculated at the expiration date based on the contractual terms.
 3. **Discount and Average**: The payoffs from all simulated paths are discounted back to the present value using an appropriate risk-free rate, and the average of these discounted payoffs is taken as an estimate of the option's current fair value.
 
-Monte Carlo simulations perform well in high volatility environments for several reasons:
-1. **Flexibility**: Monte Carlo methods can handle a wide range of option styles, underlying asset dynamics, and path-dependent payoff structures, making them suitable for complex derivative products.
-2. **Capture of Volatility Dynamics**: By simulating the underlying asset's price paths directly, Monte Carlo simulations can accurately capture the effects of high volatility, including jumps, stochastic volatility, and other non-standard dynamics.
-3. **Convergence**: With a sufficiently large number of simulated paths, Monte Carlo simulations can converge to the true option value, providing reliable results even in highly volatile market conditions.
+Monte Carlo simulations perform well in high volatility environments
 
 ## System Implementation
 
@@ -68,9 +60,7 @@ The simulator also incorporates risk management by utilizing the `manage_greeks`
 Additionally, the system retrieves the 10-year U.S. Treasury yield from the FRED API to use as the risk-free rate for option pricing calculations.
 
 ## Backtesting Engine
-
-The options trading system includes a backtesting engine that allows you to evaluate the performance of your trading strategies on historical market data before deploying them in live markets. This feature is essential for testing and refining your strategies, assessing risk, and gaining confidence in your system's performance.
-
+It includes a backtesting section, to backtest results on historical data of a desired stocks. However, past performance is never indicative of future performance
 The backtesting component is implemented in the `backtest_bot` function, which takes the following parameters:
 
 - `symbol`: The ticker symbol of the underlying asset (e.g., 'AAPL' for Apple Inc.)
@@ -84,8 +74,6 @@ The `backtest_bot` function downloads historical data for the specified asset an
 - Number of winning trades
 - Number of losing trades
 - Total profit
-
-These metrics provide valuable insights into the simulator's performance and can help you fine-tune your strategies or adjust risk management parameters as needed.
 
 ## Risk Management with Greeks
 
@@ -124,11 +112,3 @@ Follow these steps to set up and run the options trading simulator:
 
 5. Run the simulator:
 `python bot.py`
-
-## Contributing
-
-Contributions are welcome! If you find any issues or want to enhance the project, please open an issue or submit a pull request.
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
